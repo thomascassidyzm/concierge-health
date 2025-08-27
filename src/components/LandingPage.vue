@@ -240,13 +240,50 @@ const handlePlanSelection = (plan: string) => {
   align-items: center;
   justify-content: center;
   border: 2px solid rgba(255, 229, 0, 0.3);
+  position: relative;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(255, 229, 0, 0.2),
+      0 0 40px rgba(255, 229, 0, 0.1),
+      inset 0 0 20px rgba(255, 229, 0, 0.05);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(255, 229, 0, 0.4),
+      0 0 60px rgba(255, 229, 0, 0.2),
+      inset 0 0 30px rgba(255, 229, 0, 0.1);
+  }
 }
 
 .image-placeholder svg {
   width: 150px;
   height: 150px;
   color: var(--primary-gold);
-  opacity: 0.3;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 20px rgba(255, 229, 0, 0.5));
+  animation: heart-beat 1.5s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.05);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  40% {
+    transform: scale(1);
+  }
 }
 
 /* Services Section */
