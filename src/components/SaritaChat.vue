@@ -1,5 +1,15 @@
 <template>
   <div class="sarita-chat">
+    <!-- Consultation Form Modal -->
+    <div v-if="showConsultationForm" class="modal-overlay" @click="closeConsultationForm">
+      <div @click.stop>
+        <ConsultationForm 
+          @close="closeConsultationForm"
+          @submit="handleConsultationSubmit"
+        />
+      </div>
+    </div>
+
     <div class="chat-container">
       <!-- Messages Area -->
       <div class="messages-area" ref="messagesContainer">
@@ -29,7 +39,13 @@
               <span>{{ message.role === 'user' ? 'You' : 'S' }}</span>
             </div>
             <div class="message-content">
-              <div class="message-text">{{ message.content }}</div>
+              <div class="message-text" v-html="formatMessageContent(message.content)"></div>
+              <div class="message-actions" v-if="message.role === 'assistant' && shouldShowBookButton(message.content)">
+                <button @click="showConsultationForm = true" class="book-consultation-btn">
+                  <Calendar />
+                  Book Consultation
+                </button>
+              </div>
               <div class="message-time">{{ formatTime(message.timestamp) }}</div>
             </div>
           </div>
@@ -55,7 +71,7 @@
           <button 
             v-for="action in quickActions" 
             :key="action.text"
-            @click="sendQuickAction(action.text)"
+            @click="action.action ? action.action() : sendQuickAction(action.text)"
             class="quick-action-btn"
           >
             {{ action.label }}
@@ -84,7 +100,8 @@
 
 <script setup lang="ts">
 import { ref, nextTick } from 'vue'
-import { MessageSquare, Send } from 'lucide-vue-next'
+import { MessageSquare, Send, Calendar } from 'lucide-vue-next'
+import ConsultationForm from './ConsultationForm.vue'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -96,12 +113,13 @@ const messages = ref<Message[]>([])
 const currentMessage = ref('')
 const isTyping = ref(false)
 const hasStarted = ref(false)
+const showConsultationForm = ref(false)
 const messagesContainer = ref<HTMLElement>()
 
 const quickActions = [
   { label: 'Tell me about plans', text: 'Can you explain the different membership plans?' },
   { label: 'Health checks', text: 'What does an executive health check include?' },
-  { label: 'Book consultation', text: 'I\'d like to book a consultation with Sarita' }
+  { label: 'Book consultation', action: () => showConsultationForm.value = true }
 ]
 
 const startConversation = () => {
@@ -206,6 +224,24 @@ const formatTime = (date: Date): string => {
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
 }
 
+const formatMessageContent = (content: string): string => {
+  return content.replace(/\n/g, '<br>')
+}
+
+const shouldShowBookButton = (content: string): boolean => {
+  const lowerContent = content.toLowerCase()
+  return lowerContent.includes('consultation') || lowerContent.includes('book') || lowerContent.includes('appointment')
+}
+
+const closeConsultationForm = () => {
+  showConsultationForm.value = false
+}
+
+const handleConsultationSubmit = (formData: any) => {
+  console.log('Consultation form submitted:', formData)
+  // Here you could send the data to your backend
+}
+
 const scrollToBottom = () => {
   nextTick(() => {
     if (messagesContainer.value) {
@@ -219,6 +255,22 @@ const scrollToBottom = () => {
 .sarita-chat {
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
 }
 
 .chat-container {
@@ -330,6 +382,35 @@ const scrollToBottom = () => {
 .message.user .message-text {
   background: rgba(255, 229, 0, 0.1);
   border: 1px solid rgba(255, 229, 0, 0.2);
+}
+
+.message-actions {
+  margin: 0.5rem 0;
+}
+
+.book-consultation-btn {
+  background: var(--accent-gradient);
+  border: none;
+  border-radius: 20px;
+  color: var(--dark-bg);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.book-consultation-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 229, 0, 0.3);
+}
+
+.book-consultation-btn svg {
+  width: 16px;
+  height: 16px;
 }
 
 .message-time {
