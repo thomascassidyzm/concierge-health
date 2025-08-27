@@ -35,13 +35,51 @@ export default async function handler(req, res) {
       });
     }
     
-    // Claude API integration would go here
-    // For now, using fallback responses
-    return res.status(200).json({
-      content: [{
-        text: generateFallbackResponse(message)
-      }]
+    // Call Claude API
+    const claudeResponse = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'x-api-key': process.env.CLAUDE_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 500,
+        system: `You are Sarita, a warm and professional health concierge. You help people understand our premium healthcare navigation services.
+
+Our Services:
+- Essential (£250/month): GP coordination, prescriptions, digital records, specialist referrals
+- Premier (£500/month): Everything in Essential + annual health checks + 24/7 support + travel coverage
+- Elite (£1,500/month): Everything in Premier + dedicated concierge + same-day appointments + full family coverage
+
+Your role:
+- Explain our services clearly and warmly
+- Help people understand which plan suits them
+- Arrange consultations with the real Sarita
+- Be empathetic about healthcare challenges
+- Always sound professional but caring
+
+Keep responses concise and helpful.`,
+        messages: [
+          ...conversation_history.map(msg => ({
+            role: msg.role,
+            content: msg.content
+          })),
+          {
+            role: 'user',
+            content: message
+          }
+        ]
+      })
     });
+
+    if (!claudeResponse.ok) {
+      throw new Error(`Claude API error: ${claudeResponse.status}`);
+    }
+
+    const data = await claudeResponse.json();
+    return res.status(200).json(data);
     
   } catch (error) {
     console.error('Chat API error:', error);
