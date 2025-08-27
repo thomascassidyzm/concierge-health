@@ -129,17 +129,50 @@ const sendMessage = async () => {
   scrollToBottom()
   isTyping.value = true
   
-  // Simulate API call with timeout
-  setTimeout(() => {
+  try {
+    // Call the actual API
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: userMessage,
+        conversation_history: messages.value.slice(-10).map(msg => ({
+          role: msg.role,
+          content: msg.content
+        }))
+      })
+    })
+    
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`)
+    }
+    
+    const data = await response.json()
+    
+    if (data.content && data.content[0] && data.content[0].text) {
+      messages.value.push({
+        role: 'assistant',
+        content: data.content[0].text,
+        timestamp: new Date()
+      })
+    } else {
+      throw new Error('Invalid response format')
+    }
+  } catch (error) {
+    console.error('Chat API error:', error)
+    // Fallback to generated response
     const response = generateResponse(userMessage)
     messages.value.push({
       role: 'assistant',
       content: response,
       timestamp: new Date()
     })
+  } finally {
     isTyping.value = false
     scrollToBottom()
-  }, 1500)
+  }
 }
 
 const sendQuickAction = (text: string) => {
