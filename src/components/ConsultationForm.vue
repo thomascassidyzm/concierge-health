@@ -91,7 +91,15 @@ onMounted(() => {
 .calendly-embed {
   border-radius: 8px;
   overflow: hidden;
-  background: white;
+  background: #1a1a1a;
+  position: relative;
+}
+
+/* Subtle darkening of the Calendly widget */
+.calendly-inline-widget {
+  filter: brightness(0.85) contrast(1.1);
+  border: 1px solid rgba(255, 229, 0, 0.2);
+  border-radius: 8px;
 }
 
 .calendly-footer {
