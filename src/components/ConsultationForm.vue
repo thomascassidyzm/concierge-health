@@ -13,7 +13,7 @@
       <div class="calendly-embed">
         <!-- Calendly inline widget begin -->
         <div class="calendly-inline-widget" 
-             data-url="https://calendly.com/sarita-concierge/consultation?hide_event_type_details=1&hide_gdpr_banner=1"
+             data-url="https://calendly.com/hello-conciergehealthadvisors/30min?hide_event_type_details=1&hide_gdpr_banner=1"
              style="min-width:320px;height:650px;">
         </div>
       </div>
