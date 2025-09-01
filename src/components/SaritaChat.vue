@@ -563,35 +563,44 @@ const scrollToBottom = () => {
 
 @media (max-width: 768px) {
   .sarita-chat {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
+    max-width: calc(100vw - 1rem);
   }
   
   .chat-container {
-    height: 500px;
+    height: 600px;
+    width: 100%;
   }
   
   .welcome-state {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
     text-align: center;
   }
   
   .welcome-text {
     max-width: 100%;
+    font-size: 1rem;
   }
   
   .quick-actions {
     justify-content: center;
     flex-wrap: wrap;
+    gap: 0.5rem;
   }
   
   .quick-action-btn {
     flex: 1;
-    min-width: 120px;
+    min-width: 140px;
     text-align: center;
+    font-size: 0.875rem;
   }
   
   .message-content {
-    max-width: 85%;
+    max-width: 90%;
+  }
+  
+  .input-area {
+    padding: 0.75rem;
   }
   
   .input-container {

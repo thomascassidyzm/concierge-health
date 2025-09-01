@@ -128,7 +128,8 @@ p {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
+    max-width: 100%;
   }
   
   body {
@@ -142,11 +143,11 @@ p {
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
   }
   
   h1 {
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
   }
   
   p {

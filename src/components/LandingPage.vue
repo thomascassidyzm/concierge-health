@@ -394,7 +394,7 @@ const handlePlanSelection = (plan: string) => {
   }
   
   .hero {
-    padding: 6rem 0 3rem;
+    padding: 5rem 0 2rem;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -410,6 +410,11 @@ const handlePlanSelection = (plan: string) => {
     align-items: center;
   }
   
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+  }
+  
   .hero-actions {
     flex-direction: column;
     align-items: center;
@@ -418,29 +423,44 @@ const handlePlanSelection = (plan: string) => {
   
   .hero-actions .btn {
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
     justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
   }
   
   .services {
+    padding: 2rem 0;
     text-align: center;
   }
   
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin-top: 2rem;
   }
   
   .pricing {
+    padding: 2rem 0;
     text-align: center;
   }
   
   .chat-section {
+    padding: 2rem 0;
     text-align: center;
   }
   
   .chat-intro {
     text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .chat-intro h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+  
+  .chat-intro p {
+    font-size: 0.95rem;
   }
   
   .footer-content {
