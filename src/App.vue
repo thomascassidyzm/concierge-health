@@ -38,10 +38,16 @@ html, body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #app {
   min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Typography */
@@ -123,6 +129,28 @@ p {
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
+  }
+  
+  body {
+    text-align: center;
+  }
+  
+  #app {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+  
+  p {
+    font-size: 1rem;
   }
 }
 

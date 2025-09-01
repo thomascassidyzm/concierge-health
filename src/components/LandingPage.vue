@@ -161,6 +161,7 @@ const handlePlanSelection = (plan: string) => {
   min-height: 100vh;
   position: relative;
   z-index: 10;
+  width: 100%;
 }
 
 /* Navigation */
@@ -395,10 +396,18 @@ const handlePlanSelection = (plan: string) => {
   .hero {
     padding: 6rem 0 3rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .hero-content {
     max-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .hero-actions {
@@ -413,9 +422,21 @@ const handlePlanSelection = (plan: string) => {
     justify-content: center;
   }
   
+  .services {
+    text-align: center;
+  }
+  
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  
+  .pricing {
+    text-align: center;
+  }
+  
+  .chat-section {
+    text-align: center;
   }
   
   .chat-intro {
