@@ -392,13 +392,48 @@ const handlePlanSelection = (plan: string) => {
     display: none;
   }
   
+  .hero {
+    padding: 6rem 0 3rem;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
   .hero-actions {
     flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .chat-intro {
+    text-align: center;
   }
   
   .footer-content {
     flex-direction: column;
     gap: 1rem;
+    text-align: center;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .gold-line {
+    margin: 1.5rem auto;
   }
 }
 </style>
