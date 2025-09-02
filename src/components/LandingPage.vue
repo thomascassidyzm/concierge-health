@@ -24,9 +24,23 @@
           <h1>Your Personal Health <span class="gold-accent gold-glow">Concierge</span></h1>
           <div class="gold-line"></div>
           <p class="hero-subtitle">
-            Premium healthcare navigation, delivered with the care and attention you deserve. 
-            From executive health checks to specialist referrals, we handle everything.
+            With over 30 years of experience and London's largest network of specialists, 
+            we deliver premium healthcare navigation with the care and attention you deserve.
           </p>
+          <div class="credibility-badges">
+            <div class="badge">
+              <span class="badge-number">30+</span>
+              <span class="badge-text">Years Experience</span>
+            </div>
+            <div class="badge">
+              <span class="badge-number">500+</span>
+              <span class="badge-text">Leading Specialists</span>
+            </div>
+            <div class="badge">
+              <span class="badge-number">24/7</span>
+              <span class="badge-text">Year-Round Support</span>
+            </div>
+          </div>
           <div class="hero-actions">
             <button @click="scrollToChat" class="btn btn-primary">
               Chat with Sarita
@@ -217,6 +231,35 @@ const handlePlanSelection = (plan: string) => {
 .hero-subtitle {
   font-size: 1.25rem;
   margin: 2rem 0;
+}
+
+/* Credibility Badges */
+.credibility-badges {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  justify-content: center;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  text-shadow: 0 0 20px rgba(255, 229, 0, 0.3);
+}
+
+.badge-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .hero-actions {
@@ -413,6 +456,20 @@ const handlePlanSelection = (plan: string) => {
   .hero-subtitle {
     font-size: 1.1rem;
     margin: 1.5rem 0;
+  }
+  
+  .credibility-badges {
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .badge-number {
+    font-size: 1.5rem;
+  }
+  
+  .badge-text {
+    font-size: 0.75rem;
   }
   
   .hero-actions {
