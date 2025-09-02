@@ -72,6 +72,12 @@
             </div>
             <h3>Executive Health Checks</h3>
             <p>Comprehensive annual assessments at London's leading private clinics</p>
+            <ul class="service-details">
+              <li>72-variant cancer screening</li>
+              <li>Full cardiac & metabolic panel</li>
+              <li>Mental health assessment</li>
+              <li>Same-day results consultation</li>
+            </ul>
           </div>
           <div class="service-card">
             <div class="service-icon">
@@ -79,6 +85,12 @@
             </div>
             <h3>Appointment Management</h3>
             <p>We handle all bookings, follow-ups, and coordination with specialists</p>
+            <ul class="service-details">
+              <li>Same-day GP appointments</li>
+              <li>Priority specialist access</li>
+              <li>Insurance pre-authorisation</li>
+              <li>In-person accompaniment available</li>
+            </ul>
           </div>
           <div class="service-card">
             <div class="service-icon">
@@ -86,6 +98,12 @@
             </div>
             <h3>Specialist Network</h3>
             <p>Access to vetted consultants across all medical specialties</p>
+            <ul class="service-details">
+              <li>500+ leading specialists</li>
+              <li>Mental health experts</li>
+              <li>ADHD assessment & treatment</li>
+              <li>International second opinions</li>
+            </ul>
           </div>
           <div class="service-card">
             <div class="service-icon">
@@ -93,13 +111,25 @@
             </div>
             <h3>24/7 Support</h3>
             <p>Round-the-clock access to medical guidance when you need it</p>
+            <ul class="service-details">
+              <li>Doctor on-call service</li>
+              <li>Mental health crisis support</li>
+              <li>International medical assistance</li>
+              <li>Prescription management</li>
+            </ul>
           </div>
           <div class="service-card">
             <div class="service-icon">
               <FileText />
             </div>
-            <h3>Health Records</h3>
-            <p>Digitized, organized medical records accessible anywhere</p>
+            <h3>Health Records & Insurance</h3>
+            <p>Complete medical record management and insurance navigation</p>
+            <ul class="service-details">
+              <li>Digital health vault</li>
+              <li>Insurance claim management</li>
+              <li>Coverage maximisation</li>
+              <li>Home blood test kits</li>
+            </ul>
           </div>
           <div class="service-card">
             <div class="service-icon">
@@ -107,6 +137,12 @@
             </div>
             <h3>Emergency Coordination</h3>
             <p>Rapid response and hospital liaison in urgent situations</p>
+            <ul class="service-details">
+              <li>A&E fast-track access</li>
+              <li>Medical evacuation support</li>
+              <li>Hospital liaison service</li>
+              <li>Family coordination</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -360,6 +396,9 @@ const handlePlanSelection = (plan: string) => {
   border-radius: 12px;
   border: 1px solid rgba(255, 229, 0, 0.1);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
 }
 
 .service-card:hover {
@@ -387,6 +426,34 @@ const handlePlanSelection = (plan: string) => {
 
 .service-card h3 {
   margin-bottom: 0.5rem;
+}
+
+.service-card p {
+  margin-bottom: 1rem;
+}
+
+.service-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-details li {
+  font-size: 0.875rem;
+  color: var(--primary-gold);
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.service-details li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: var(--primary-gold);
 }
 
 /* Testimonials Section */
@@ -525,6 +592,15 @@ const handlePlanSelection = (plan: string) => {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 2rem;
+  }
+  
+  .service-card {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .service-details li {
+    font-size: 0.8rem;
   }
   
   .testimonials-section {
