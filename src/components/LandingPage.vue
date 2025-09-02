@@ -446,13 +446,14 @@ const handlePlanSelection = (plan: string) => {
   }
   
   .chat-section {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     text-align: center;
+    min-height: auto;
   }
   
   .chat-intro {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   
   .chat-intro h2 {

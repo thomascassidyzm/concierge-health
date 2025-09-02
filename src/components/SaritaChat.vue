@@ -568,18 +568,31 @@ const scrollToBottom = () => {
   }
   
   .chat-container {
-    height: 600px;
+    height: 70vh;
+    max-height: 500px;
+    min-height: 400px;
     width: 100%;
   }
   
   .welcome-state {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     text-align: center;
   }
   
   .welcome-text {
     max-width: 100%;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin: 1rem 0 1.5rem;
+  }
+  
+  .sarita-avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sarita-avatar span {
+    font-size: 2rem;
   }
   
   .quick-actions {
@@ -601,6 +614,7 @@ const scrollToBottom = () => {
   
   .input-area {
     padding: 0.75rem;
+    border-top: 1px solid rgba(255, 229, 0, 0.1);
   }
   
   .input-container {
@@ -609,6 +623,33 @@ const scrollToBottom = () => {
   
   .message-input {
     font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0.6rem 1rem;
+  }
+  
+  .send-btn {
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    height: 65vh;
+    max-height: 450px;
+  }
+  
+  .welcome-state {
+    padding: 1rem;
+  }
+  
+  .sarita-avatar {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-text {
+    font-size: 0.9rem;
+    margin: 0.75rem 0 1.25rem;
   }
 }
 </style>
