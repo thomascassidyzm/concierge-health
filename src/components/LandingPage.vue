@@ -453,15 +453,23 @@ const handlePlanSelection = (plan: string) => {
   
   .chat-intro {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   
   .chat-intro h2 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+    margin-bottom: 0.5rem;
   }
   
   .chat-intro p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .chat-intro .gold-line {
+    margin: 0.75rem auto;
+    height: 2px;
+    width: 60px;
   }
   
   .footer-content {
@@ -476,6 +484,24 @@ const handlePlanSelection = (plan: string) => {
   
   .gold-line {
     margin: 1.5rem auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .chat-section {
+    padding: 1rem 0;
+  }
+  
+  .chat-intro {
+    margin-bottom: 0.75rem;
+  }
+  
+  .chat-intro h2 {
+    font-size: 1.25rem;
+  }
+  
+  .chat-intro p {
+    font-size: 0.85rem;
   }
 }
 </style>

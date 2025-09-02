@@ -633,23 +633,70 @@ const scrollToBottom = () => {
 
 @media (max-width: 480px) {
   .chat-container {
-    height: 65vh;
-    max-height: 450px;
+    height: 60vh;
+    max-height: 420px;
+    min-height: 350px;
   }
   
   .welcome-state {
-    padding: 1rem;
+    padding: 0.75rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .welcome-state h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+  }
+  
+  .welcome-state p:first-of-type {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
   }
   
   .sarita-avatar {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 1rem;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .sarita-avatar span {
+    font-size: 1.5rem;
   }
   
   .welcome-text {
-    font-size: 0.9rem;
-    margin: 0.75rem 0 1.25rem;
+    font-size: 0.85rem;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.4;
+  }
+  
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .chat-container {
+    height: 55vh;
+    max-height: 380px;
+    min-height: 320px;
+  }
+  
+  .welcome-state {
+    padding: 0.5rem;
+  }
+  
+  .sarita-avatar {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .welcome-text {
+    font-size: 0.8rem;
   }
 }
 </style>
