@@ -5,7 +5,7 @@
       <div class="container">
         <div class="nav-content">
           <div class="logo">
-            <span class="gold-accent gold-glow">Concierge Health</span>
+            <span class="gold-accent gold-glow">Concierge Health Advisors</span>
           </div>
           <div class="nav-links">
             <a href="#services" class="nav-link">Services</a>
