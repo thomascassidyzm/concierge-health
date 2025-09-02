@@ -128,7 +128,7 @@ p {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 0.5rem;
+    padding: 0 0.75rem;
     max-width: 100%;
   }
   

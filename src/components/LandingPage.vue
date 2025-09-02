@@ -451,6 +451,10 @@ const handlePlanSelection = (plan: string) => {
     min-height: auto;
   }
   
+  .chat-section .container {
+    padding: 0 0.25rem;
+  }
+  
   .chat-intro {
     text-align: center;
     margin-bottom: 1rem;
@@ -487,13 +491,24 @@ const handlePlanSelection = (plan: string) => {
   }
 }
 
+@media (max-width: 480px) {
+  .chat-section .container {
+    padding: 0;
+  }
+}
+
 @media (max-width: 380px) {
   .chat-section {
     padding: 1rem 0;
   }
   
+  .chat-section .container {
+    padding: 0;
+  }
+  
   .chat-intro {
     margin-bottom: 0.75rem;
+    padding: 0 0.5rem;
   }
   
   .chat-intro h2 {

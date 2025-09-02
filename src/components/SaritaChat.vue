@@ -563,8 +563,8 @@ const scrollToBottom = () => {
 
 @media (max-width: 768px) {
   .sarita-chat {
-    margin: 0 0.5rem;
-    max-width: calc(100vw - 1rem);
+    margin: 0 0.25rem;
+    max-width: calc(100vw - 0.5rem);
   }
   
   .chat-container {
@@ -632,10 +632,18 @@ const scrollToBottom = () => {
 }
 
 @media (max-width: 480px) {
+  .sarita-chat {
+    margin: 0;
+    max-width: 100%;
+  }
+  
   .chat-container {
     height: 60vh;
     max-height: 420px;
     min-height: 350px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
   
   .welcome-state {
@@ -679,10 +687,16 @@ const scrollToBottom = () => {
 }
 
 @media (max-width: 380px) {
+  .sarita-chat {
+    margin: 0;
+    max-width: 100%;
+  }
+  
   .chat-container {
     height: 55vh;
     max-height: 380px;
     min-height: 320px;
+    border-radius: 0;
   }
   
   .welcome-state {
