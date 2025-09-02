@@ -148,6 +148,15 @@
       </div>
     </section>
 
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-us-section">
+      <div class="container">
+        <h2>Why Choose <span class="gold-accent">Concierge Health</span></h2>
+        <div class="gold-line"></div>
+        <WhyChooseUs @book-consultation="scrollToChat" />
+      </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials-section">
       <div class="container">
@@ -200,6 +209,7 @@ import { Heart, Shield, Calendar, Users, Phone, FileText, Zap, ArrowRight } from
 import PricingPlans from './PricingPlans.vue'
 import SaritaChat from './SaritaChat.vue'
 import Testimonials from './Testimonials.vue'
+import WhyChooseUs from './WhyChooseUs.vue'
 
 const Arrow = ArrowRight
 
@@ -456,6 +466,17 @@ const handlePlanSelection = (plan: string) => {
   color: var(--primary-gold);
 }
 
+/* Why Choose Us Section */
+.why-us-section {
+  padding: 4rem 0;
+  background: var(--dark-secondary);
+  text-align: center;
+}
+
+.why-us-section .gold-line {
+  margin: 1.5rem auto;
+}
+
 /* Testimonials Section */
 .testimonials-section {
   padding: 4rem 0;
@@ -601,6 +622,10 @@ const handlePlanSelection = (plan: string) => {
   
   .service-details li {
     font-size: 0.8rem;
+  }
+  
+  .why-us-section {
+    padding: 2rem 0;
   }
   
   .testimonials-section {
