@@ -112,6 +112,16 @@
       </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <h2>What Our Members <span class="gold-accent">Say</span></h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">Real experiences from those who trust us with their health</p>
+        <Testimonials />
+      </div>
+    </section>
+
     <!-- Pricing Section -->
     <section id="pricing" class="pricing">
       <div class="container">
@@ -153,6 +163,7 @@
 import { Heart, Shield, Calendar, Users, Phone, FileText, Zap, ArrowRight } from 'lucide-vue-next'
 import PricingPlans from './PricingPlans.vue'
 import SaritaChat from './SaritaChat.vue'
+import Testimonials from './Testimonials.vue'
 
 const Arrow = ArrowRight
 
@@ -378,9 +389,28 @@ const handlePlanSelection = (plan: string) => {
   margin-bottom: 0.5rem;
 }
 
+/* Testimonials Section */
+.testimonials-section {
+  padding: 4rem 0;
+  background: var(--dark-bg);
+  text-align: center;
+}
+
+.testimonials-section .gold-line {
+  margin: 1.5rem auto;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+
 /* Pricing Section */
 .pricing {
   padding: 4rem 0;
+  background: var(--dark-secondary);
 }
 
 /* Chat Section */
@@ -495,6 +525,15 @@ const handlePlanSelection = (plan: string) => {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 2rem;
+  }
+  
+  .testimonials-section {
+    padding: 2rem 0;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .pricing {
