@@ -117,8 +117,8 @@ const showConsultationForm = ref(false)
 const messagesContainer = ref<HTMLElement>()
 
 const quickActions = [
-  { label: 'Tell me about plans', text: 'Can you explain the different membership plans?' },
-  { label: 'Health checks', text: 'What does an executive health check include?' },
+  { label: 'How does it work?', text: 'How does your service work?' },
+  { label: 'What\'s included?', text: 'What\'s included in the plans?' },
   { label: 'Book consultation', action: () => showConsultationForm.value = true }
 ]
 
@@ -330,7 +330,7 @@ const scrollToBottom = () => {
 .messages-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .message {
@@ -379,9 +379,19 @@ const scrollToBottom = () => {
   white-space: pre-wrap;
 }
 
+.message.user {
+  justify-content: flex-end;
+}
+
 .message.user .message-text {
   background: rgba(255, 229, 0, 0.1);
   border: 1px solid rgba(255, 229, 0, 0.2);
+  border-radius: 18px 18px 4px 18px;
+}
+
+.message.assistant .message-text {
+  border-radius: 18px 18px 18px 4px;
+  max-width: 85%;
 }
 
 .message-actions {
