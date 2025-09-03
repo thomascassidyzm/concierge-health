@@ -131,6 +131,25 @@ const startConversation = () => {
   })
 }
 
+// Simulate typing effect
+const simulateTyping = async (fullText: string, messageIndex: number) => {
+  const words = fullText.split(' ')
+  let currentText = ''
+  
+  for (let i = 0; i < words.length; i++) {
+    currentText += (i > 0 ? ' ' : '') + words[i]
+    messages.value[messageIndex].content = currentText
+    
+    // Scroll as text appears
+    await nextTick()
+    scrollToBottom()
+    
+    // Variable delay for more natural feel (faster than Dom's)
+    const delay = Math.random() * 25 + 15 // 15-40ms per word for snappier feel
+    await new Promise(resolve => setTimeout(resolve, delay))
+  }
+}
+
 const sendMessage = async () => {
   if (!currentMessage.value.trim() || isTyping.value) return
   
@@ -170,11 +189,17 @@ const sendMessage = async () => {
     const data = await response.json()
     
     if (data.content && data.content[0] && data.content[0].text) {
+      // Add empty message for typing simulation
       messages.value.push({
         role: 'assistant',
-        content: data.content[0].text,
+        content: '',
         timestamp: new Date()
       })
+      
+      isTyping.value = false
+      
+      // Simulate typing the response
+      await simulateTyping(data.content[0].text, messages.value.length - 1)
     } else {
       throw new Error('Invalid response format')
     }
@@ -182,11 +207,18 @@ const sendMessage = async () => {
     console.error('Chat API error:', error)
     // Fallback to generated response
     const response = generateResponse(userMessage)
+    
+    // Add empty message for typing simulation
     messages.value.push({
       role: 'assistant',
-      content: response,
+      content: '',
       timestamp: new Date()
     })
+    
+    isTyping.value = false
+    
+    // Simulate typing the fallback response
+    await simulateTyping(response, messages.value.length - 1)
   } finally {
     isTyping.value = false
     scrollToBottom()
