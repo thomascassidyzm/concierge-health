@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <BubbleBackground />
-    <LandingPage />
+    <SaritaChatFullScreen v-if="showFullScreenChat" @close="showFullScreenChat = false" />
+    <template v-else>
+      <BubbleBackground />
+      <LandingPage @open-fullscreen-chat="showFullScreenChat = true" />
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import LandingPage from './components/LandingPage.vue'
 import BubbleBackground from './components/BubbleBackground.vue'
+import SaritaChatFullScreen from './components/SaritaChatFullScreen.vue'
+
+const showFullScreenChat = ref(false)
 </script>
 
 <style>

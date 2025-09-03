@@ -183,6 +183,12 @@
           <h2>Meet <span class="gold-accent gold-glow">Sarita</span></h2>
           <div class="gold-line"></div>
           <p>Your personal health concierge is ready to understand your needs and explain how we can support your healthcare journey.</p>
+          <button @click="emit('open-fullscreen-chat')" class="btn btn-secondary full-screen-btn">
+            Open Full-Screen Chat
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+            </svg>
+          </button>
         </div>
         <SaritaChat />
       </div>
@@ -211,10 +217,20 @@ import SaritaChat from './SaritaChat.vue'
 import Testimonials from './Testimonials.vue'
 import WhyChooseUs from './WhyChooseUs.vue'
 
+const emit = defineEmits(['open-fullscreen-chat'])
+
 const Arrow = ArrowRight
 
 const scrollToChat = () => {
-  document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' })
+  // Check if on mobile or user preference
+  const isMobile = window.innerWidth <= 768
+  if (isMobile) {
+    // Open full-screen chat on mobile
+    emit('open-fullscreen-chat')
+  } else {
+    // Scroll to embedded chat on desktop
+    document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' })
+  }
 }
 
 const scrollToPricing = () => {
@@ -715,5 +731,18 @@ const handlePlanSelection = (plan: string) => {
   .chat-intro p {
     font-size: 0.85rem;
   }
+}
+
+/* Full-screen chat button */
+.full-screen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.full-screen-btn svg {
+  width: 18px;
+  height: 18px;
 }
 </style>
